@@ -1,0 +1,19 @@
+{
+  "name": "node.js-a2.2-optisku",
+  "version": "1.0.0",
+  "description": "rendu semaine nodejs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/IIM-Creative-Technology/Node.js-A2.2-OptiSku.git"
+  },
+  "author": "OptiSku",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/IIM-Creative-Technology/Node.js-A2.2-OptiSku/issues"
+  },
+  "homepage": "https://github.com/IIM-Creative-Technology/Node.js-A2.2-OptiSku#readme"
+}
