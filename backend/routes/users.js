@@ -1,2 +1,10 @@
-const express = require("express")
+import express from 'express'
 const router = express.Router()
+
+export default router.get('/', (req,res) => {
+    res.json({
+        firstName: "Opti",
+        lastName: "Skuu",
+        email: "optiskuu@gmail.com"
+    })
+})
