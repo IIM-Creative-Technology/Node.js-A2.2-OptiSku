@@ -4,7 +4,7 @@ import cors from 'cors'
 import bodyParser from 'body-parser'
 import { Server } from "socket.io"
 
-// import router from "./routes/users"
+import userRoute from "./routes/users.js"
 
 const app = express();
 app.use(bodyParser.json())
@@ -41,6 +41,8 @@ app.get('/', (req, res) => {
   app.delete('/', (req, res) => {
     res.json({msg:'DEL'})
   })
+
+  app.use("/api/user", userRoute);
 
 server.listen(port, () => {
     console.log('Example app listening on port 3000')
