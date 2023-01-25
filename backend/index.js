@@ -4,6 +4,8 @@ import cors from 'cors'
 import bodyParser from 'body-parser'
 import { Server } from "socket.io"
 
+// import router from "./routes/users"
+
 const app = express();
 app.use(bodyParser.json())
 app.use(cors())
