@@ -21,8 +21,8 @@ io.on('connection', (socket) => {
   console.log('a user connected');
 
   socket.on('message', (msg) => {
-    // console.log(msg.msg)
-    io.emit('serv message', msg.msg);
+    console.log(msg)
+    io.emit('serv message', msg);
   });
 });
 
