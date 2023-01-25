@@ -8,3 +8,7 @@ export default router.get('/', (req,res) => {
         email: "optiskuu@gmail.com"
     })
 })
+
+router.post('/', (req,res) => {
+    console.log(req.body)
+})
