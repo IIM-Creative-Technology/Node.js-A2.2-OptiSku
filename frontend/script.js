@@ -2,6 +2,8 @@ const btn = document.getElementById("btnFetch")
 const ul = document.querySelector("ul")
 const btnSocket = document.getElementById("btnSocket")
 const socketList = document.querySelector(".socketList")
+const btnChat = document.getElementById("Chat")
+const myName = "Clément"
 
 btn.addEventListener("click", ()=> {
     fetch("http://localhost:3000/", {
@@ -33,9 +35,21 @@ btnSocket.addEventListener("click", () => {
         msg: 'HI !'
     })
 })
+btnChat.addEventListener("click", () => {
+    const message = document.getElementById("message").value
+    socket.emit("message",
+    {
+        Name: myName,
+        msg: message
+    })
+    
+})
 
 socket.on('serv message', (msg) => {
-    const li = document.createElement('li')
-    li.innerText = msg
-    socketList.append(li)
+    const name = document.createElement('li')
+    name.innerText = msg.Name
+    socketList.append(name)
+    const text = document.createElement('li')
+    text.innerText = msg.msg
+    socketList.append(text)
 })
