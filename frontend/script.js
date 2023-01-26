@@ -22,7 +22,7 @@ btn.addEventListener("click", ()=> {
     .then(data => {
         console.log(data)
         const li = document.createElement('li')
-        li.innerText = data.school
+        li.innerText = JSON.stringify(data.school)
         ul.append(li)
     })
 })
