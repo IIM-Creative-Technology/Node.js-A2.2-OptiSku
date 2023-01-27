@@ -3,6 +3,9 @@ import express from 'express'
 import cors from 'cors'
 import bodyParser from 'body-parser'
 import { Server } from "socket.io"
+import mongoose, { Schema } from 'mongoose'
+mongoose.set('strictQuery', true)
+
 
 import userRoute from "./routes/users.js"
 
@@ -47,3 +50,5 @@ app.get('/', (req, res) => {
 server.listen(port, () => {
     console.log('Example app listening on port 3000')
 })
+
+mongoose.connect("mongodb://127.0.0.1:27017/test");
