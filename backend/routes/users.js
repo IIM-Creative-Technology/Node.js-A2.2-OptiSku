@@ -34,25 +34,23 @@ let currentLName = ""
 let currentEmail = ""
 
 export default router.get('/', (req,res) => {
-<<<<<<< HEAD
-    res.json({
-        firstName: currentFName,
-        lastName: currentLName,
-        email: currentEmail
-    })
-})
+//     res.json({
+//         firstName: currentFName,
+//         lastName: currentLName,
+//         email: currentEmail
+//     })
+// })
 
-router.post('/', (req,res) => {
-    // console.log(req.body.firstName)
-    currentFName = req.body.firstName
-    currentLName = req.body.lastName
-    currentEmail = req.body.email
-    res.json({
-        firstName: req.body.firstName,
-        lastName: req.body.lastName,
-        email: req.body.email
-    })
-=======
+// router.post('/', (req,res) => {
+//     // console.log(req.body.firstName)
+//     currentFName = req.body.firstName
+//     currentLName = req.body.lastName
+//     currentEmail = req.body.email
+//     res.json({
+//         firstName: req.body.firstName,
+//         lastName: req.body.lastName,
+//         email: req.body.email
+//     })
     User.find({}).then(function (users) {
     res.send(users);
     });
@@ -65,5 +63,4 @@ router.post('/', (req,res) => {
     user.password = "1234"
     user.save()
     res.send(user)
->>>>>>> 63920ea2b19dae5acef2dcbd12eb236a315c4ce6
 })
