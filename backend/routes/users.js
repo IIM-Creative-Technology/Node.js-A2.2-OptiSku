@@ -51,4 +51,27 @@ router.post('/', (req,res) => {
     user.password = req.body.password
     user.save()
     res.send(user)
+    res.json({
+        firstName: req.body.firstName,
+        lastName: req.body.password,
+        email: req.body.email
+    })
+})
+
+router.post('/play/:_id', (req,res) => {
+  User.find({_id:req.params._id}).then(function (users) {
+    const user = new UserPlay()
+    user.name = users.name
+    user.mail = "Clement@free.fr"
+    user.password = "1234"
+    user.save()
+    res.send(user)
+  })
+})
+
+router.delete('/:_id', (req,res) => {
+  User.findOneAndDelete({_id:req.params._id}).then(function (){
+    res.send("Deleted")
+  })
+  
 })
