@@ -10,9 +10,22 @@
     <button id="btnFetch">Fetch</button>
     <button id="btnSocket">Socket</button>
 
-    <ul>
+    <form action="#">
+        <input type="text" placeholder="Prenom" class="formFName">
+        <input type="text" placeholder="Nom" class="formLName">
+        <input type="text" placeholder="Mail" class="formMail">
+        <button type="submit" id="submitBtn">Envoyer</button>
+    </form>
+
+    <div>firstName: <span id="firstName"></span></div>
+    <div>lastName: <span id="lastName"></span></div>
+    <div>email: <span id="email"></span></div>
+
+    <h1>Account info</h1>
+    <ul class="showAccountInfo">
 
     </ul>
+
     <ul class="socketList">
 
     </ul>
