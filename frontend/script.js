@@ -6,6 +6,7 @@ const btnChat = document.getElementById("Chat")
 const myName = "Clément"
 
 const submitBtn = document.getElementById('submitBtn')
+const submitBtnSignUp = document.getElementById('submitBtnSignUp')
 
 
 // btn.addEventListener("click", ()=> {
@@ -30,19 +31,27 @@ const submitBtn = document.getElementById('submitBtn')
 //     })
 // })
 
+const allAccount = document.querySelector(".allAccount")
 btn.addEventListener("click", () => {
     fetch("http://localhost:3000/api/user", {
         method: "GET",
     }).then(d => {
         return d.json()
     }).then(dd => {
-        const firstName = document.querySelector("#firstName");
-        const lastName = document.querySelector("#lastName");
-        const email = document.querySelector("#email");
-        
-        firstName.innerHTML = dd.firstName;
-        lastName.innerHTML = dd.lastName;
-        email.innerHTML = dd.email;
+
+        for (let i = 0; i < dd.length; i++) {
+            for (const property in dd[i]) {
+                if (property != 'password' && property != '__v' && property != '_id') {
+                    // console.log(dd[i][property])
+                    let li = document.createElement('li')
+                    li.innerText += dd[i][property]
+                    allAccount.append(li)
+                }
+            }
+            let li = document.createElement('li')
+            li.innerText += "-------------------------"
+            allAccount.append(li)
+        }
     })
 });
 
@@ -51,11 +60,6 @@ submitBtn.addEventListener("click", () => {
     let firstNameForm = document.querySelector('.formFName')
     let passwordForm = document.querySelector('.password')
     let emailForm = document.querySelector('.formMail')
-
-    const firstName = document.querySelector("#firstName");
-    const lastName = document.querySelector("#lastName");
-    const email = document.querySelector("#email");
-    console.log(firstName.value,lastName.value,email.value)
     fetch("http://localhost:3000/api/user", {
         method: "POST",
         body: JSON.stringify({
@@ -73,14 +77,33 @@ submitBtn.addEventListener("click", () => {
     .then(data => {
         console.log(data)
         for (const property in data) {
-            // console.log(`${property}: ${data[property]}`);
             let li = document.createElement('li')
             li.innerText = data[property]
             ulAccountInfo.append(li)
         }
-        // firstName.innerHTML = data.firstName;
-        // lastName.innerHTML = data.lastName;
-        // email.innerHTML = data.email;
+    })
+})
+
+submitBtnSignUp.addEventListener("click", () => {
+    let NameSignUp = document.querySelector('.formFNameEmail')
+    let passwordSignUp = document.querySelector('.passwordSignUp')
+    let loggedTitle = document.querySelector('.logged')
+    let loggedName = document.querySelector('.loggedName')
+    fetch(`http://localhost:3000/api/user/${NameSignUp.value}/${passwordSignUp.value}`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        }
+    })
+    .then(res => {
+        return res.json()
+    })
+    .then(data => {
+        if(data[0].length != 0) {
+            loggedTitle.innerText = "Connecté avec : "
+            loggedName.innerText = data[0].name
+            let userConnecte = [data[0]]
+        }
     })
 })
 
@@ -105,9 +128,6 @@ btnChat.addEventListener("click", () => {
 })
 
 socket.on('serv message', (msg) => {
-    const name = document.createElement('li')
-    name.innerText = msg.Name
-    socketList.append(name)
     const text = document.createElement('li')
     text.innerText = msg.msg
     socketList.append(text)

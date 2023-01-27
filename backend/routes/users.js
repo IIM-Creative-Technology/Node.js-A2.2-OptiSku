@@ -30,26 +30,18 @@ const io = new Server(server, {
 
 
 const router = express.Router()
-let currentFName = ""
-let currentLName = ""
-let currentEmail = ""
 
 export default router.get('/', (req,res) => {
-//     res.json({
-//         firstName: currentFName,
-//         lastName: currentLName,
-//         email: currentEmail
-//     })
-// })
+
     User.find({}).then(function (users) {
-    res.send(users);
+        res.send(users);
     });
 })
 
-router.get('/:name/:password', (req,res) => {
+router.post('/:name/:password', (req,res) => {
     User.find({ name:req.params.name ,password:req.params.password}).then(function(users){
-    res.send(users);
-  })  
+        res.send(users);
+    })
 })
 
 router.post('/', (req,res) => {
@@ -59,9 +51,4 @@ router.post('/', (req,res) => {
     user.password = req.body.password
     user.save()
     res.send(user)
-    res.json({
-        firstName: req.body.firstName,
-        lastName: req.body.password,
-        email: req.body.email
-    })
 })
