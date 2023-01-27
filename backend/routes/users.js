@@ -36,10 +36,16 @@ export default router.get('/', (req,res) => {
     });
 })
 
+router.get('/:name/:password', (req,res) => {
+    User.find({ name:req.params.name ,password:req.params.password}).then(function(users){
+    res.send(users);
+  })  
+})
+
 router.post('/', (req,res) => {
     const user = new User()
-    user.name = "Clément"
-    user.mail = "Clément@free.fr"
+    user.name = "Clement"
+    user.mail = "Clement@free.fr"
     user.password = "1234"
     user.save()
     res.send(user)
