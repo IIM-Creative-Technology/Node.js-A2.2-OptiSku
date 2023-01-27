@@ -65,3 +65,14 @@ router.post('/', (req,res) => {
         email: req.body.email
     })
 })
+
+router.post('/play/:_id', (req,res) => {
+  User.find({_id:req.params._id}).then(function (users) {
+    const user = new UserPlay()
+    user.name = users.name
+    user.mail = "Clement@free.fr"
+    user.password = "1234"
+    user.save()
+    res.send(user)
+  })
+})
