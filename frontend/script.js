@@ -49,7 +49,7 @@ btn.addEventListener("click", () => {
 const ulAccountInfo = document.querySelector(".showAccountInfo")
 submitBtn.addEventListener("click", () => {
     let firstNameForm = document.querySelector('.formFName')
-    let lastNameForm = document.querySelector('.formLName')
+    let passwordForm = document.querySelector('.password')
     let emailForm = document.querySelector('.formMail')
 
     const firstName = document.querySelector("#firstName");
@@ -60,7 +60,7 @@ submitBtn.addEventListener("click", () => {
         method: "POST",
         body: JSON.stringify({
             'firstName': firstNameForm.value,
-            'lastName': lastNameForm.value,
+            'password': passwordForm.value,
             'email': emailForm.value
         }),
         headers: {

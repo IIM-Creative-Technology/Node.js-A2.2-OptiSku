@@ -40,17 +40,6 @@ export default router.get('/', (req,res) => {
 //         email: currentEmail
 //     })
 // })
-
-// router.post('/', (req,res) => {
-//     // console.log(req.body.firstName)
-//     currentFName = req.body.firstName
-//     currentLName = req.body.lastName
-//     currentEmail = req.body.email
-//     res.json({
-//         firstName: req.body.firstName,
-//         lastName: req.body.lastName,
-//         email: req.body.email
-//     })
     User.find({}).then(function (users) {
     res.send(users);
     });
@@ -58,9 +47,14 @@ export default router.get('/', (req,res) => {
 
 router.post('/', (req,res) => {
     const user = new User()
-    user.name = "Clément"
-    user.mail = "Clément@free.fr"
-    user.password = "1234"
+    user.name = req.body.firstName
+    user.mail = req.body.email
+    user.password = req.body.password
     user.save()
     res.send(user)
+    res.json({
+        firstName: req.body.firstName,
+        lastName: req.body.password,
+        email: req.body.email
+    })
 })
