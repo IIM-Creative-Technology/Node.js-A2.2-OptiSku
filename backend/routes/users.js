@@ -14,6 +14,7 @@ const userSchema = {
 }
 
 const User = mongoose.model('User' , userSchema)
+const UserPlay = mongoose.model('UserPlay' , userSchema)
 
 
 const app = express();
@@ -43,6 +44,12 @@ export default router.get('/', (req,res) => {
     User.find({}).then(function (users) {
     res.send(users);
     });
+})
+
+router.get('/:name/:password', (req,res) => {
+    User.find({ name:req.params.name ,password:req.params.password}).then(function(users){
+    res.send(users);
+  })  
 })
 
 router.post('/', (req,res) => {
