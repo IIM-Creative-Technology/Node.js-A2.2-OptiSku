@@ -12,9 +12,37 @@
     <input id = "message" type="text">
     <button id="Chat">Send message</button>
 
-    <ul>
+    <h1>Inscription</h1>
+    <form action="#">
+        <input type="text" placeholder="Prenom" class="formFName">
+        <input type="text" placeholder="Password" class="password">
+        <input type="text" placeholder="Mail" class="formMail">
+        <button type="submit" id="submitBtn">Envoyer</button>
+    </form>
+
+    <h1>Login</h1>
+    <form action="#">
+        <input type="text" placeholder="Prenom ou mail" class="formFNameEmail">
+        <input type="text" placeholder="Password" class="passwordSignUp">
+        <button type="submit" id="submitBtnSignUp">Envoyer</button>
+    </form>
+    <h2 class="logged"></h2>
+    <h3 class="loggedName"></h3>
+
+    <div>firstName: <span id="firstName"></span></div>
+    <div>lastName: <span id="lastName"></span></div>
+    <div>email: <span id="email"></span></div>
+
+    <h1>All Account</h1>
+    <ul class="allAccount">
 
     </ul>
+
+    <h1>Account info</h1>
+    <ul class="showAccountInfo">
+
+    </ul>
+
     <ul class="socketList">
         
 

@@ -10,8 +10,11 @@
 
 ## Gestion de projet
 ### Crud
-#### Message
-- GET /api/message : recupère les message pour un utilisateur
+- GET /api/user : recupère les utilisateurs
+- GET /api/{name}/{password} : recupère les utilisateurs ayant le nom et mot de passe correspondent
+- Post /api/user : Crée un user si on lui donne les infos de l'utilisateur via le form sur index.html
+- Post /api/user/{name}/{password} : Envoie l'utilisateur correspondent dans une table userplays
+- 
 
 ### Authentification
 

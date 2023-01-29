@@ -3,7 +3,9 @@ import express from 'express'
 import cors from 'cors'
 import bodyParser from 'body-parser'
 import { Server } from "socket.io"
-import mongoose from 'mongoose'
+import mongoose, { Schema } from 'mongoose'
+mongoose.set('strictQuery', true)
+
 
 import userRoute from "./routes/users.js"
 
@@ -11,7 +13,7 @@ const app = express();
 app.use(bodyParser.json())
 app.use(cors())
 
-mongoose.connect('mongodb://127.0.0.1:27017/test')
+mongoose.connect("mongodb://localhost:27017/test")
 
 const userSchema = {
   name: String,
@@ -74,3 +76,4 @@ app.get('/', (req, res) => {
 server.listen(port, () => {
     console.log('Example app listening on port 3000')
 })
+
