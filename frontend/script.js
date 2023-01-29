@@ -1,35 +1,13 @@
 const btn = document.getElementById("btnFetch")
 const ul = document.querySelector("ul")
-const btnSocket = document.getElementById("btnSocket")
 const socketList = document.querySelector(".socketList")
 const btnChat = document.getElementById("Chat")
-const myName = "Clément"
 
 const submitBtn = document.getElementById('submitBtn')
 const submitBtnSignUp = document.getElementById('submitBtnSignUp')
+let userConnecte = []
 
 
-// btn.addEventListener("click", ()=> {
-//     fetch("http://localhost:3000/", {
-//         method: "POST",
-//         body: JSON.stringify({
-//             'school': "aaaaaaa",
-//             'year': 2023
-//         }),
-//         headers: {
-//             "Content-Type": "application/json"
-//         }
-//     })
-//     .then(res => {
-//         return res.json()
-//     })
-//     .then(data => {
-//         console.log(data)
-//         const li = document.createElement('li')
-//         li.innerText = data.school
-//         ul.append(li)
-//     })
-// })
 
 const allAccount = document.querySelector(".allAccount")
 btn.addEventListener("click", () => {
@@ -102,7 +80,7 @@ submitBtnSignUp.addEventListener("click", () => {
         if(data[0].length != 0) {
             loggedTitle.innerText = "Connecté avec : "
             loggedName.innerText = data[0].name
-            let userConnecte = [data[0]]
+            userConnecte = [data[0]]
         }
     })
 })
@@ -111,23 +89,26 @@ submitBtnSignUp.addEventListener("click", () => {
 
 const socket = io('http://localhost:3000')
 
-btnSocket.addEventListener("click", () => {
-    socket.emit("message",
-    {
-        msg: 'HI !'
-    })
-})
 btnChat.addEventListener("click", () => {
     const message = document.getElementById("message").value
+    if (userConnecte.length > 0) {
+        messagename = userConnecte[0].name;
+      } else {
+        messagename = "Anonyme";
+      }
     socket.emit("message",
     {
-        Name: myName,
+        
+        Name: messagename,
         msg: message
     })
     
 })
 
 socket.on('serv message', (msg) => {
+    const textName = document.createElement('li')
+    textName.innerText = msg.Name
+    socketList.append(textName)
     const text = document.createElement('li')
     text.innerText = msg.msg
     socketList.append(text)

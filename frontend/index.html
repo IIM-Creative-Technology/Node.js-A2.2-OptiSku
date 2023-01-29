@@ -7,31 +7,24 @@
     <title>Document</title>
 </head>
 <body>
-    <button id="btnFetch">Fetch</button>
-    <button id="btnSocket">Socket</button>
-    <input id = "message" type="text">
-    <button id="Chat">Send message</button>
+    <button id="btnFetch">Fetch all users</button>
 
-    <h1>Inscription</h1>
+    <h1>Register</h1>
     <form action="#">
         <input type="text" placeholder="Prenom" class="formFName">
         <input type="text" placeholder="Password" class="password">
         <input type="text" placeholder="Mail" class="formMail">
-        <button type="submit" id="submitBtn">Envoyer</button>
+        <button type="submit" id="submitBtn">Submit</button>
     </form>
 
     <h1>Login</h1>
     <form action="#">
         <input type="text" placeholder="Prenom ou mail" class="formFNameEmail">
         <input type="text" placeholder="Password" class="passwordSignUp">
-        <button type="submit" id="submitBtnSignUp">Envoyer</button>
+        <button type="submit" id="submitBtnSignUp">Submit</button>
     </form>
     <h2 class="logged"></h2>
     <h3 class="loggedName"></h3>
-
-    <div>firstName: <span id="firstName"></span></div>
-    <div>lastName: <span id="lastName"></span></div>
-    <div>email: <span id="email"></span></div>
 
     <h1>All Account</h1>
     <ul class="allAccount">
@@ -43,10 +36,14 @@
 
     </ul>
 
+    
+    <h2>Chat :</h2>
     <ul class="socketList">
         
 
     </ul>
+    <input id = "message" type="text">
+    <button id="Chat">Send message</button>
     <script src="http://localhost:3000/socket.io/socket.io.js"></script>
     <script src="script.js"></script>
 </body>
