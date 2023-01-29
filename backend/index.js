@@ -57,19 +57,19 @@ io.on('connection', (socket) => {
 
 const port = 3000
 
-app.get('/', (req, res) => {
-    console.log('nouvelle conexion')
-    res.json({msg:'GETEEE'})
-  })
+// app.get('/', (req, res) => {
+//     console.log('nouvelle conexion')
+//     res.json({msg:'GET'})
+//   })
   
-  app.post('/', (req, res) => {
-    console.log(req.body)
-    res.json(req.body)
-  })
+//   app.post('/', (req, res) => {
+//     console.log(req.body)
+//     res.json(req.body)
+//   })
   
-  app.delete('/', (req, res) => {
-    res.json({msg:'DEL'})
-  })
+//   app.delete('/', (req, res) => {
+//     res.json({msg:'DEL'})
+//   })
 
   app.use("/api/user", userRoute);
 
