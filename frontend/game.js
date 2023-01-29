@@ -6,6 +6,7 @@ let counter = 0;
 function createRandomSquares() {
     for (let i = 0; i < 2; i++) {
         let square = document.createElement("div");
+        square.classList.add("square");
         square.style.left = Math.random() * 500 + "px";
         square.style.top = Math.random() * 500 + "px";
         square.style.width = Math.random() * 50 + "px";

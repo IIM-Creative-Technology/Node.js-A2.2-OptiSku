@@ -6,13 +6,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Play !</title>
     <link rel="stylesheet" href="game.css">
+    
 </head>
 
 <body>
-    <span id="score"></span>
-    <main id="main">
-        <span id="timer"></span>
-    </main>
+    <div>
+        <a href="index.html">Back to main page</a>
+        <a href="game.html">Replay</a>
+        <span id="score"></span>
+        <main id="main">
+            <span id="timer"></span>
+        </main>
+    </div>
+    <div>
+        <h2>Chat :</h2>
+        <ul class="socketList">
+                
+
+        </ul>
+        <input id = "message" type="text">
+        <button id="Chat">Send message</button>
+    </div>
+    
 </body>
+<script src="http://localhost:3000/socket.io/socket.io.js"></script>
+<script src="script.js"></script>
 <script src="game.js"></script>
 </html>

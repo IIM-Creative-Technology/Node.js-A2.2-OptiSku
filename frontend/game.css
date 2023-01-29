@@ -1,6 +1,7 @@
-div{
-    width: 60px;
-    height: 60px;
-    background-color: brown;
+.square{
     position: absolute;
+}
+body{
+    display: flex;
+    justify-content: space-between;
 }
