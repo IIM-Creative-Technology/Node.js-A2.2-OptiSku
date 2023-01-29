@@ -41,7 +41,7 @@ export default router.get('/', (req,res) => {
 
 let isConnected = 0
 // Login avec nom + mdp dans l'url
-router.post('/:name/:password', (req,res) => {
+router.get('/:name/:password', (req,res) => {
     User.find({ name:req.params.name ,password:req.params.password}).then(function(users){
         res.send(users);
     })
@@ -98,5 +98,4 @@ router.delete('/', (req,res) => {
       connection: isConnected
     })
   })
-
 })
