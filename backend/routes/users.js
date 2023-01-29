@@ -31,6 +31,7 @@ const io = new Server(server, {
 
 const router = express.Router()
 
+// Recupere tou les utilisateurs
 export default router.get('/', (req,res) => {
 
     User.find({}).then(function (users) {
@@ -38,12 +39,29 @@ export default router.get('/', (req,res) => {
     });
 })
 
+let isConnected = 0
+// Login avec nom + mdp dans l'url
 router.post('/:name/:password', (req,res) => {
     User.find({ name:req.params.name ,password:req.params.password}).then(function(users){
         res.send(users);
     })
 })
 
+// Login
+router.post('/login', (req,res) => {
+  User.find({ name:req.body.nameSignUp ,password:req.body.passwordSignUp}).then(function(users){
+    isConnected = 1
+    res.send(users);
+  })
+})
+
+// Log out
+router.get('/logout', (req,res) => {
+  res.json({connection:isConnected})
+  isConnected = 0
+})
+
+// Creer un nouveau utilisateur
 router.post('/', (req,res) => {
     const user = new User()
     user.name = req.body.firstName
@@ -58,6 +76,7 @@ router.post('/', (req,res) => {
     })
 })
 
+// Pour le jeu
 router.post('/play/:_id', (req,res) => {
   User.find({_id:req.params._id}).then(function (users) {
     const user = new UserPlay()
@@ -69,9 +88,15 @@ router.post('/play/:_id', (req,res) => {
   })
 })
 
-router.delete('/:_id', (req,res) => {
-  User.findOneAndDelete({_id:req.params._id}).then(function (){
-    res.send("Deleted")
+// Delete
+router.delete('/', (req,res) => {
+  console.log(req.body.id)
+  isConnected = 1
+  User.findOneAndDelete({_id:req.body.id}).then(function (){
+    res.json({
+      msg: 'Got a DELETE request at /',
+      connection: isConnected
+    })
   })
-  
+
 })
