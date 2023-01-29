@@ -55,7 +55,7 @@ router.post('/', (req,res) => {
         firstName: req.body.firstName,
         lastName: req.body.password,
         email: req.body.email
-    })
+    }) 
 })
 
 router.post('/play/:_id', (req,res) => {
