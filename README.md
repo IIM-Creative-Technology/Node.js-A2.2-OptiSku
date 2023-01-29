@@ -7,6 +7,12 @@
 ## Outils
 - Express
 - Socket.io
+- MongoDB
+
+## Installation
+- Express : $ npm install express --save
+- Socket.io : $ npm install socket.io express --save
+- MongoDB : 
 
 ## Gestion de projet
 ### Crud
@@ -14,7 +20,9 @@
 - GET /api/{name}/{password} : recupère les utilisateurs ayant le nom et mot de passe correspondent
 - Post /api/user : Crée un user si on lui donne les infos de l'utilisateur via le form sur index.html
 - Post /api/user/{name}/{password} : Envoie l'utilisateur correspondent dans une table userplays
-- 
+- POST /api/user/login : connection, si le compte existe, avec les informations du formulaire
+- GET /api/user/logout : verifie si un utlisateur est est connecté et renvoie 1 (true) ou 0 (false) au front
+- Delete /api/user : supprime l'utilisateur actuellement connecté
 
 ### Authentification
 
